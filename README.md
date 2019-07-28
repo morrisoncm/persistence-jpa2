@@ -1,2 +1,2 @@
-# springbootjpa2
-Sample Spring Boot Rest API with JPA 2 and  Junit 5
+# gradlerestapi
+Sample Gradle Spring Boot Rest API with Junit 5
