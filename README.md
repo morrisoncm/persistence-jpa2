@@ -11,4 +11,4 @@ The h2 console can be accessed at the following location http://127.0.0.1:8080/h
 
 
 # Postman scripts
-To test using Postman the scripts are in the following location postman/demo - users.postman_collection.json.  Simply clone or download the project. The main starting point for the application is the com.demo.jdbc.Application.java
+To test using Postman the scripts are in the following location <https://github.com/morrisoncm/springbootjpa2/tree/master/postman>.  Simply clone or download the project. The main starting point for the application is the <https://github.com/morrisoncm/springbootjpa2/blob/master/src/main/java/com/demo/jpa2/Application.java>
