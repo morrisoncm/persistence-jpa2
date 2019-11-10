@@ -1,14 +1,21 @@
-# springbootjpa2
+#persistence-jpa2
 Sample Spring Boot with JPA 2 API and Junit 5
 
 <https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html>
 
+##Workspace Setup
+Download and install java <https://jdk.java.net/>  
+Setting JAVA_HOME  <https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html>  
+Download Eclipse <https://www.eclipse.org/downloads/packages/>  
+Download and Install Gradle <https://docs.gradle.org/current/userguide/installation.html>  
+
 ## Running the application
-To run the application from the command line change to the project  root directory and simply type gradle bootRun
-To run the application inside Eclipse 
-Simply clone or download the project. 
-The main starting point for the application is  <https://github.com/morrisoncm/springbootjpa2/blob/master/src/main/java/com/demo/jpa2/Application.java>.
-Right click the Application.java  and select Run As ->Java Application.
+Clone or download the project  
+To run the application from Terminal / Command Prompt   
+Change directory to the project root directory and type gradle bootRun  
+To run the application inside Eclipse  
+The starting point is Application.java  
+Right click the Application.java  and select Run As ->Java Application  
 
 ## Postman Scripts
 To test using Postman the scripts are in the following location <https://github.com/morrisoncm/springbootjpa2/blob/master/postman/demo%20-%20students%20and%20subjects.postman_collection.json>
