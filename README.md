@@ -3,7 +3,7 @@ Sample Spring Boot with JPA 2 API and Junit 5
 
 <https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html>
 
-##Workspace Setup
+## Workspace Setup
 Download and install java <https://jdk.java.net/>  
 Setting JAVA_HOME  <https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html>  
 Download Eclipse <https://www.eclipse.org/downloads/packages/>  
