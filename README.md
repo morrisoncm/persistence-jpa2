@@ -4,7 +4,7 @@ Sample Spring Boot with JPA 2 API and Junit 5
 <https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html>
 
 ## Running the application
-To run the application from the command line change to the project  root directory and simply run gradle bootRun
+To run the application from the command line change to the project  root directory and simply type gradle bootRun
 To run the application inside Eclipse 
 Simply clone or download the project. 
 The main starting point for the application is  <https://github.com/morrisoncm/springbootjpa2/blob/master/src/main/java/com/demo/jpa2/Application.java>.
