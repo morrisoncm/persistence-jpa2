@@ -17,7 +17,7 @@ public class SubjectServiceImpl implements SubjectService {
 
 	@Autowired
 	private SubjectRepository subjectRepository;
-	
+
 	@Override
 	public List<Subject> getSubjects() {
 		return subjectRepository.findAll();
@@ -25,7 +25,7 @@ public class SubjectServiceImpl implements SubjectService {
 
 	@Override
 	public Subject getSubject(String name) {
-		Subject subjectFromDb =  subjectRepository.findSubjectByName(name);
+		Subject subjectFromDb = subjectRepository.findSubjectByName(name);
 		if (ObjectUtils.isEmpty(subjectFromDb)) {
 			throw new SubjectDoesNotExistException();
 		}
@@ -34,23 +34,23 @@ public class SubjectServiceImpl implements SubjectService {
 
 	@Override
 	public void registerSubject(Subject subject) {
-		Subject subjectFromDb =  subjectRepository.findSubjectByName(subject.getName());
+		Subject subjectFromDb = subjectRepository.findSubjectByName(subject.getName());
 		if (!ObjectUtils.isEmpty(subjectFromDb)) {
 			throw new SubjectExistsException();
-		}	
+		}
 		subjectRepository.save(subject);
 	}
 
 	@Override
 	public void updateSubject(Subject subject) {
-		Subject subjectFromDb =  getSubject(subject.getName());
+		Subject subjectFromDb = getSubject(subject.getName());
 		subject.setId(subjectFromDb.getId());
 		subjectRepository.save(subject);
 	}
 
 	@Override
 	public void deleteSubject(String name) {
-		Subject subjectFromDb =  getSubject(name);
-		subjectRepository.delete(subjectFromDb);	
+		Subject subjectFromDb = getSubject(name);
+		subjectRepository.delete(subjectFromDb);
 	}
 }

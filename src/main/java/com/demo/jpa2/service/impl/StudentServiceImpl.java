@@ -51,6 +51,6 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void deleteStudentProfile(String registration) {
 		Student studentFromDb = getStudent(registration);
-		studentRepository.delete(studentFromDb);	
-	}	
+		studentRepository.delete(studentFromDb);
+	}
 }
