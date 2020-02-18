@@ -83,13 +83,8 @@ public class Student {
 			return false;
 		Student other = (Student) obj;
 		if (registration == null) {
-			if (other.registration != null) {
-				return false;
-			}
-		} else if (!registration.equals(other.registration)) {
-			return false;
-		}
-		return true;
-	}
+            return other.registration == null;
+		} else return registration.equals(other.registration);
+    }
 
 }
