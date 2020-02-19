@@ -3,14 +3,14 @@ package com.demo.jpa2.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.demo.jpa2.dao.StudentRepository;
 import com.demo.jpa2.domain.Student;
-import com.demo.jpa2.exception.StudentDoesNotExistException;
-import com.demo.jpa2.exception.StudentExistsException;
 import com.demo.jpa2.service.StudentService;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -27,7 +27,8 @@ public class StudentServiceImpl implements StudentService {
 	public Student getStudent(String registration) {
 		Student studentFromDb = studentRepository.findStudentByRegistration(registration);
 		if (ObjectUtils.isEmpty(studentFromDb)) {
-			throw new StudentDoesNotExistException();
+			throw new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "Student does not exist!");
 		}
 		return studentFromDb;
 	}
@@ -36,7 +37,8 @@ public class StudentServiceImpl implements StudentService {
 	public void registerStudent(Student student) {
 		Student studentFromDb = studentRepository.findStudentByRegistration(student.getRegistration());
 		if (!ObjectUtils.isEmpty(studentFromDb)) {
-			throw new StudentExistsException();
+			throw new ResponseStatusException(
+					HttpStatus.FORBIDDEN, "Student already exists!");
 		}
 		studentRepository.save(student);
 	}
