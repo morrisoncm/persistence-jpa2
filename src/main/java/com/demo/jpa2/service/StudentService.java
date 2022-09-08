@@ -1,18 +1,17 @@
 package com.demo.jpa2.service;
 
 import java.util.List;
-
 import com.demo.jpa2.domain.Student;
 
 public interface StudentService {
 
-	List<Student> getStudents();
+  List<Student> getStudents();
 
-	Student getStudent(String registration);
+  Student getStudent(String email);
 
-	void registerStudent(Student student);
+  void registerStudent(Student student);
 
-	void updateStudentProfile(Student student);
+  void updateStudentProfile(Student student, String email);
 
-	void deleteStudentProfile(String registration);
+  void deleteStudentProfile(String email);
 }

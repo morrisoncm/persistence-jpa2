@@ -1,9 +1,37 @@
-INSERT INTO student (registration, password, firstName, lastName, email) VALUES
-('2091245678', 'password', 'John', 'Doe', 'johndoe@gmail.com'),
-('7895612349', 'xyz1234', 'Jane', 'Doe', 'janedoe@yahoo.com');
+INSERT INTO student (firstName, lastName, email) VALUES
+('Carole', 'Singer', 'csinger@myuniversity.edu'),
+('Justin', 'Thyme', 'jthyme@myuniversity.edu');
+
+INSERT INTO professor (title, firstName, lastName, email) VALUES
+('Dr.', 'Jay', 'Walker', 'jwalker@myuniversity.edu'),
+('Dr.', 'Jack', 'Pott', 'jpott@myuniversity.edu');
 
 
 INSERT INTO subject (name, description) VALUES
-('Mathematics', 'Teaching and learning how to solve problems using algorithms and formulas necessary for computations.'),
+('Maths', 'Teaching and learning how to solve problems using algorithms and formulas necessary for computations.'),
 ('English', 'Analyzing short stories and  novels including nonfiction, drama, poems, and myths'),
 ('Physics', 'The concepts of vectors and scalars using the kinematic equations, graphs of motion, and reference frames and relative motions');
+
+INSERT INTO students_subjects (studentId, subjectid) VALUES 
+(SELECT id from student WHERE email = 'csinger@myuniversity.edu', SELECT id FROM subject WHERE name = 'Maths');
+
+INSERT INTO students_subjects (studentId, subjectid) VALUES 
+(SELECT id from student WHERE email = 'csinger@myuniversity.edu', SELECT id FROM subject WHERE name = 'English');
+
+INSERT INTO students_subjects (studentId, subjectid) VALUES 
+(SELECT id from student WHERE email = 'jthyme@myuniversity.edu', SELECT id FROM subject WHERE name = 'Maths');
+
+INSERT INTO students_subjects (studentId, subjectid) VALUES 
+(SELECT id from student WHERE email = 'jthyme@myuniversity.edu', SELECT id FROM subject WHERE name = 'Physics');
+
+INSERT INTO professors_subjects (professorid, subjectid) VALUES 
+(SELECT id from professor WHERE email = 'jpott@myuniversity.edu', SELECT id FROM subject WHERE name = 'Maths');
+
+INSERT INTO professors_subjects (professorid, subjectid) VALUES 
+(SELECT id from student WHERE email = 'jpott@myuniversity.edu', SELECT id FROM subject WHERE name = 'English');
+
+INSERT INTO professors_subjects (professorid, subjectid) VALUES 
+(SELECT id from student WHERE email = 'jwalker@myuniversity.edu', SELECT id FROM subject WHERE name = 'Maths');
+
+INSERT INTO professors_subjects (professorid, subjectid) VALUES 
+(SELECT id from student WHERE email = 'jwalker@myuniversity.edu', SELECT id FROM subject WHERE name = 'Physics'); 

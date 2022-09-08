@@ -1,43 +1,48 @@
 package com.demo.jpa2.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import com.demo.jpa2.domain.Student;
 import com.demo.jpa2.service.StudentService;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/jpa2/students")
 public class StudentController {
 
-	@Autowired
-	private StudentService studentService;
+  @Autowired
+  private StudentService studentService;
 
-	@GetMapping()
-	public List<Student> getStudents() {
-		return studentService.getStudents();
-	}
+  @GetMapping
+  public List<Student> getStudents() {
+    return studentService.getStudents();
+  }
 
-	@PostMapping
-	public void registerStudent(@RequestBody Student student) {
-		studentService.registerStudent(student);
-	}
+  @GetMapping("/{email}")
+  public Student getStudent(@PathVariable String email) {
+    return studentService.getStudent(email);
+  }
 
-	@GetMapping("/{registration}")
-	public Student getStudent(@PathVariable String registration) {
-		return studentService.getStudent(registration);
-	}
+  @PostMapping
+  public void registerStudent(@RequestBody Student student) {
+    studentService.registerStudent(student);
+  }
 
-	@PutMapping("/{registration}")
-	public void updateProfile(@PathVariable String registration, @RequestBody Student student) {
-		student.setRegistration(registration);
-		studentService.updateStudentProfile(student);
-	}
+  @PutMapping("/{email}")
+  public void updateStudentProfile(@RequestBody Student student, @PathVariable String email) {
+    studentService.updateStudentProfile(student, email);
+  }
 
-	@DeleteMapping("/{registration}")
-	public void deleteProfile(@PathVariable String registration) {
-		studentService.deleteStudentProfile(registration);
-	}
+  @DeleteMapping("/{email}")
+  public void deleteStudentProfile(@PathVariable String email) {
+    studentService.deleteStudentProfile(email);
+  }
+
 }
