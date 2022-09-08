@@ -28,10 +28,10 @@ INSERT INTO professors_subjects (professorid, subjectid) VALUES
 (SELECT id from professor WHERE email = 'jpott@myuniversity.edu', SELECT id FROM subject WHERE name = 'Maths');
 
 INSERT INTO professors_subjects (professorid, subjectid) VALUES 
-(SELECT id from student WHERE email = 'jpott@myuniversity.edu', SELECT id FROM subject WHERE name = 'English');
+(SELECT id from professor WHERE email = 'jpott@myuniversity.edu', SELECT id FROM subject WHERE name = 'English');
 
 INSERT INTO professors_subjects (professorid, subjectid) VALUES 
-(SELECT id from student WHERE email = 'jwalker@myuniversity.edu', SELECT id FROM subject WHERE name = 'Maths');
+(SELECT id from professor WHERE email = 'jwalker@myuniversity.edu', SELECT id FROM subject WHERE name = 'Maths');
 
 INSERT INTO professors_subjects (professorid, subjectid) VALUES 
-(SELECT id from student WHERE email = 'jwalker@myuniversity.edu', SELECT id FROM subject WHERE name = 'Physics'); 
+(SELECT id from professor WHERE email = 'jwalker@myuniversity.edu', SELECT id FROM subject WHERE name = 'Physics'); 
