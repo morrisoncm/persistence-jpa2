@@ -25,7 +25,7 @@ public class ProfessorController {
     return professorService.getProfessors();
   }
 
-  @GetMapping("/{email}")
+  @GetMapping("/{email:.+}")
   public Professor getProfessor(@PathVariable String email) {
     return professorService.getProfessor(email);
   }
@@ -35,12 +35,12 @@ public class ProfessorController {
     professorService.registerProfessor(professor);
   }
 
-  @PutMapping("/{email}")
+  @PutMapping("/{email:.+}")
   public void updateProfessorProfile(@RequestBody Professor professor, @PathVariable String email) {
     professorService.updateProfessorProfile(professor, email);
   }
 
-  @DeleteMapping("/{email}")
+  @DeleteMapping("/{email:.+}")
   public void deleteProfesorProfile(@PathVariable String email) {
     professorService.deleteProfesorProfile(email);
   }

@@ -25,7 +25,7 @@ public class StudentController {
     return studentService.getStudents();
   }
 
-  @GetMapping("/{email}")
+  @GetMapping("/{email:.+}")
   public Student getStudent(@PathVariable String email) {
     return studentService.getStudent(email);
   }
@@ -35,7 +35,7 @@ public class StudentController {
     studentService.registerStudent(student);
   }
 
-  @PutMapping("/{email}")
+  @PutMapping("/{email:.+}")
   public void updateStudentProfile(@RequestBody Student student, @PathVariable String email) {
     studentService.updateStudentProfile(student, email);
   }
