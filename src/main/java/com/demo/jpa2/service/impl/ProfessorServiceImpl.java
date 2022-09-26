@@ -17,7 +17,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 
   @Autowired
   private ProfessorRepository professorRepository;
-  
+
   @Override
   public List<Professor> getProfessors() {
     return professorRepository.findAll();
@@ -36,16 +36,16 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
     try {
       professorRepository.save(professor);
-    } catch (Exception cause) {
+    } catch (final Exception cause) {
       log.error("registerProfessor() -> professor {}", professor, cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Professor Not Created");
-    }   
+    }
     professorRepository.save(professor);
   }
 
   @Override
   public void updateProfessorProfile(Professor professor, String email) {
-    Professor professorFromDb = getProfessor(email);
+    final var professorFromDb = getProfessor(email);
     if (ObjectUtils.isEmpty(professorFromDb)) {
       log.error("updateProfessorProfile() -> exception for professor {} and email {}, because not found", professor, email);
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor Not Found");
@@ -54,7 +54,7 @@ public class ProfessorServiceImpl implements ProfessorService {
       professor.setEmail(email);
       professor.setId(professorFromDb.getId());
       professorRepository.save(professor);
-    } catch (Exception cause) {
+    } catch (final Exception cause) {
       log.error("updateProfessorProfile() -> exception for student {}", professor,  cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Professor Not Updated");
     }
@@ -62,14 +62,14 @@ public class ProfessorServiceImpl implements ProfessorService {
 
   @Override
   public void deleteProfesorProfile(String email) {
-    Professor professorFromDb = getProfessor(email);
+    final var professorFromDb = getProfessor(email);
     if (ObjectUtils.isEmpty(professorFromDb)) {
       log.error("deleteProfesorProfile() -> exception for email {} because not found", email);
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor Not Found");
     }
     try {
       professorRepository.delete(professorFromDb);
-    } catch (Exception cause) {
+    } catch (final Exception cause) {
       log.error("deleteProfesorProfile() -> exception for professorFromDb {}", professorFromDb,  cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student Not Updated");
     }

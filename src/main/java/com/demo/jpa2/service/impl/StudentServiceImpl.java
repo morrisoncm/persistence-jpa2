@@ -17,7 +17,7 @@ public class StudentServiceImpl implements StudentService {
 
   @Autowired
   private StudentRepository studentRepository;
-  
+
   @Override
   public List<Student> getStudents() {
     return studentRepository.findAll();
@@ -36,15 +36,15 @@ public class StudentServiceImpl implements StudentService {
     }
     try {
       studentRepository.save(student);
-    } catch (Exception cause) {
+    } catch (final Exception cause) {
       log.error("registerStudent() -> student {}", student, cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student Not Created");
-    }   
+    }
   }
 
   @Override
   public void updateStudentProfile(Student student, String email) {
-    Student studentFromDb = getStudent(email);
+    final var studentFromDb = getStudent(email);
     if (ObjectUtils.isEmpty(studentFromDb)) {
       log.error("updateStudentProfile() -> exception for student {} and email {}, because not found", student, email);
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student Not Found");
@@ -53,7 +53,7 @@ public class StudentServiceImpl implements StudentService {
       student.setEmail(email);
       student.setId(studentFromDb.getId());
       studentRepository.save(student);
-    } catch (Exception cause) {
+    } catch (final Exception cause) {
       log.error("updateStudentProfile() -> exception for student {}", student,  cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student Not Updated");
     }
@@ -61,14 +61,14 @@ public class StudentServiceImpl implements StudentService {
 
   @Override
   public void deleteStudentProfile(String email) {
-    Student studentFromDb = getStudent(email);
+    final var studentFromDb = getStudent(email);
     if (ObjectUtils.isEmpty(studentFromDb)) {
       log.error("updateStudentProfile() -> exception for email {} because not found", email);
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student Not Found");
     }
     try {
       studentRepository.delete(studentFromDb);
-    } catch (Exception cause) {
+    } catch (final Exception cause) {
       log.error("updateStudentProfile() -> exception for studentFromDb {}", studentFromDb,  cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student Not Updated");
     }

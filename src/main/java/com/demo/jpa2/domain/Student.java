@@ -11,12 +11,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "student")
 public class Student {
@@ -33,8 +31,9 @@ public class Student {
   @Column(name = "email")
   private String email;
   @OneToMany
-  @JoinTable(name = "students_subjects", joinColumns = @JoinColumn(name = "studentid"),
-      inverseJoinColumns = @JoinColumn(name = "subjectid"))
+  @JoinTable(name = "students_subjects", 
+  joinColumns = {@JoinColumn(name = "studentid", referencedColumnName = "id")},
+  inverseJoinColumns = {@JoinColumn(name = "subjectid", referencedColumnName = "id")})
   private List<Subject> subjects;
 
 }

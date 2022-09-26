@@ -8,4 +8,5 @@ import com.demo.jpa2.domain.Student;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
   Student findByEmail(String email);
+
 }
