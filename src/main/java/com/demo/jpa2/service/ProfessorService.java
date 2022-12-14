@@ -1,7 +1,7 @@
 package com.demo.jpa2.service;
 
-import java.util.List;
 import com.demo.jpa2.domain.Professor;
+import java.util.List;
 
 public interface ProfessorService {
 

@@ -1,15 +1,15 @@
 package com.demo.jpa2.service.impl;
 
+import com.demo.jpa2.dao.ProfessorRepository;
+import com.demo.jpa2.domain.Professor;
+import com.demo.jpa2.service.ProfessorService;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.server.ResponseStatusException;
-import com.demo.jpa2.dao.ProfessorRepository;
-import com.demo.jpa2.domain.Professor;
-import com.demo.jpa2.service.ProfessorService;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
@@ -47,7 +47,10 @@ public class ProfessorServiceImpl implements ProfessorService {
   public void updateProfessorProfile(Professor professor, String email) {
     final var professorFromDb = getProfessor(email);
     if (ObjectUtils.isEmpty(professorFromDb)) {
-      log.error("updateProfessorProfile() -> exception for professor {} and email {}, because not found", professor, email);
+      log.error(
+          "updateProfessorProfile() -> exception for professor {} and email {}, because not found",
+          professor,
+          email);
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor Not Found");
     }
     try {
@@ -55,7 +58,7 @@ public class ProfessorServiceImpl implements ProfessorService {
       professor.setId(professorFromDb.getId());
       professorRepository.save(professor);
     } catch (final Exception cause) {
-      log.error("updateProfessorProfile() -> exception for student {}", professor,  cause);
+      log.error("updateProfessorProfile() -> exception for student {}", professor, cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Professor Not Updated");
     }
   }
@@ -70,7 +73,8 @@ public class ProfessorServiceImpl implements ProfessorService {
     try {
       professorRepository.delete(professorFromDb);
     } catch (final Exception cause) {
-      log.error("deleteProfesorProfile() -> exception for professorFromDb {}", professorFromDb,  cause);
+      log.error("deleteProfesorProfile() -> exception for professorFromDb {}", professorFromDb,
+          cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student Not Updated");
     }
   }

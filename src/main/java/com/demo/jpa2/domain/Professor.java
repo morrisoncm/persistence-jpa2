@@ -1,16 +1,8 @@
 package com.demo.jpa2.domain;
 
-import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -32,9 +24,9 @@ public class Professor {
   @Column(name = "email")
   private String email;
   @OneToMany
-  @JoinTable(name = "professors_subjects", 
-  joinColumns = {@JoinColumn(name = "professorid", referencedColumnName = "id")},
-  inverseJoinColumns = {@JoinColumn(name = "subjectid", referencedColumnName = "id")})
+  @JoinTable(name = "professors_subjects", joinColumns = {
+      @JoinColumn(name = "professorid", referencedColumnName = "id")}, inverseJoinColumns = {
+      @JoinColumn(name = "subjectid", referencedColumnName = "id")})
   private List<Subject> subjects;
 
 }

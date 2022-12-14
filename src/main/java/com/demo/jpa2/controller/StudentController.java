@@ -1,5 +1,7 @@
 package com.demo.jpa2.controller;
 
+import com.demo.jpa2.domain.Student;
+import com.demo.jpa2.service.StudentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,8 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.demo.jpa2.domain.Student;
-import com.demo.jpa2.service.StudentService;
 
 @RestController
 @RequestMapping("/jpa2/students")
@@ -36,7 +36,8 @@ public class StudentController {
   }
 
   @PutMapping("/{email:.+}")
-  public void updateStudentProfile(@RequestBody Student student, @PathVariable String email) {
+  public void updateStudentProfile(@RequestBody Student student,
+      @PathVariable String email) {
     studentService.updateStudentProfile(student, email);
   }
 

@@ -1,15 +1,15 @@
 package com.demo.jpa2.service.impl;
 
+import com.demo.jpa2.dao.StudentRepository;
+import com.demo.jpa2.domain.Student;
+import com.demo.jpa2.service.StudentService;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.server.ResponseStatusException;
-import com.demo.jpa2.dao.StudentRepository;
-import com.demo.jpa2.domain.Student;
-import com.demo.jpa2.service.StudentService;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
@@ -46,7 +46,9 @@ public class StudentServiceImpl implements StudentService {
   public void updateStudentProfile(Student student, String email) {
     final var studentFromDb = getStudent(email);
     if (ObjectUtils.isEmpty(studentFromDb)) {
-      log.error("updateStudentProfile() -> exception for student {} and email {}, because not found", student, email);
+      log.error(
+          "updateStudentProfile() -> exception for student {} and email {}, because not found",
+          student, email);
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student Not Found");
     }
     try {
@@ -54,7 +56,7 @@ public class StudentServiceImpl implements StudentService {
       student.setId(studentFromDb.getId());
       studentRepository.save(student);
     } catch (final Exception cause) {
-      log.error("updateStudentProfile() -> exception for student {}", student,  cause);
+      log.error("updateStudentProfile() -> exception for student {}", student, cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student Not Updated");
     }
   }
@@ -69,7 +71,7 @@ public class StudentServiceImpl implements StudentService {
     try {
       studentRepository.delete(studentFromDb);
     } catch (final Exception cause) {
-      log.error("updateStudentProfile() -> exception for studentFromDb {}", studentFromDb,  cause);
+      log.error("updateStudentProfile() -> exception for studentFromDb {}", studentFromDb, cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student Not Updated");
     }
   }

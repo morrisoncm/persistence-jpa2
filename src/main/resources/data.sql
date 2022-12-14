@@ -6,7 +6,6 @@ INSERT INTO professor (title, firstName, lastName, email) VALUES
 ('Dr.', 'Jay', 'Walker', 'jwalker@myuniversity.edu'),
 ('Dr.', 'Jack', 'Pott', 'jpott@myuniversity.edu');
 
-
 INSERT INTO subject (name, description) VALUES
 ('Maths', 'Teaching and learning how to solve problems using algorithms and formulas necessary for computations.'),
 ('English', 'Analyzing short stories and  novels including nonfiction, drama, poems, and myths'),
