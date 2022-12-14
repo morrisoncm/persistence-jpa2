@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"name": "persistence-jpa2",
+			"path": "../persistence-jpa2"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive",
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}
