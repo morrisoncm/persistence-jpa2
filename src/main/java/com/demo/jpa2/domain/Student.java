@@ -38,6 +38,6 @@ public class Student {
   @JoinTable(name = "students_subjects", joinColumns = {
       @JoinColumn(name = "studentid", referencedColumnName = "id")}, inverseJoinColumns = {
       @JoinColumn(name = "subjectid", referencedColumnName = "id")})
-  private List<Subject> subjects;
+  private List<StudentSubject> studentSubjects;
 
 }

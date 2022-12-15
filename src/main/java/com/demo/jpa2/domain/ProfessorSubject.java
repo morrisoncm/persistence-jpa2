@@ -17,22 +17,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "professor")
-public class Professor {
+@Table(name = "subject")
+public class ProfessorSubject {
 
   @Id
   @JsonIgnore
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @Column(name = "title")
-  private String title;
-  @Column(name = "firstname")
-  private String firstname;
-  @Column(name = "lastname")
-  private String lastname;
-  @Column(name = "email")
-  private String email;
+  @Column(name = "name")
+  private String name;
+  @Column(name = "description")
+  private String description;
   @ManyToMany(
       fetch = FetchType.LAZY,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE}
@@ -40,12 +36,12 @@ public class Professor {
   @JoinTable(
       name = "professors_subjects",
       joinColumns = {
-          @JoinColumn(name = "professorid", referencedColumnName = "id"),
+          @JoinColumn(name = "subjectid", referencedColumnName = "id"),
       },
       inverseJoinColumns = {
-          @JoinColumn(name = "subjectid", referencedColumnName = "id"),
+          @JoinColumn(name = "professorid", referencedColumnName = "id"),
       }
   )
-  private List<ProfessorSubject> professorSubjects;
+  private List<Professor> professors;
 
 }

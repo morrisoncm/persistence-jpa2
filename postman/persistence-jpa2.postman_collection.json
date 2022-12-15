@@ -1,104 +1,104 @@
 {
-	"info": {
-		"_postman_id": "97175df9-c82a-49ed-92eb-657d82952a44",
-		"name": "persistence-jpa2",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17031348"
-	},
-	"item": [
-		{
-			"name": "getProfessors",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/jpa2/professors",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"jpa2",
-						"professors"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getProfessor",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/jpa2/professors/jwalker@myuniversity.edu",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"jpa2",
-						"professors",
-						"jwalker@myuniversity.edu"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getStudents",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/jpa2/students",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"jpa2",
-						"students"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getStudent",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/jpa2/students/csinger@myuniversity.edu",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"jpa2",
-						"students",
-						"csinger@myuniversity.edu"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "97175df9-c82a-49ed-92eb-657d82952a44",
+    "name": "persistence-jpa2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17031348"
+  },
+  "item": [
+    {
+      "name": "getProfessors",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/jpa2/professors",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8080",
+          "path": [
+            "jpa2",
+            "professors"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getProfessor",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/jpa2/professors/jwalker@myuniversity.edu",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8080",
+          "path": [
+            "jpa2",
+            "professors",
+            "jwalker@myuniversity.edu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getStudents",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/jpa2/students",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8080",
+          "path": [
+            "jpa2",
+            "students"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getStudent",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/jpa2/students/csinger@myuniversity.edu",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8080",
+          "path": [
+            "jpa2",
+            "students",
+            "csinger@myuniversity.edu"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }
