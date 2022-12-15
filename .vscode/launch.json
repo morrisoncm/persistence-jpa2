@@ -1,0 +1,14 @@
+{
+	"configurations": [
+		{
+			"type": "java",
+			"name": "Spring Boot-Main<persistence-jpa2>",
+			"request": "launch",
+			"cwd": "${workspaceFolder}",
+			"mainClass": "com.demo.jpa2.Application",
+			"projectName": "persistence-jpa2",
+			"vmArgs": [],
+			"envFile": "${workspaceFolder}/.env"
+		}
+	]
+}
