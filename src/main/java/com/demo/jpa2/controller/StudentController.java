@@ -37,8 +37,8 @@ public class StudentController {
 
   @PutMapping("/{email:.+}")
   public void updateStudentProfile(
-    @RequestBody Student student,
-    @PathVariable String email
+      @RequestBody Student student,
+      @PathVariable String email
   ) {
     studentService.updateStudentProfile(student, email);
   }
