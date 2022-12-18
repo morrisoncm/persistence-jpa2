@@ -5,11 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class StudentDTO {
+public class StudentDto {
 
   private String firstname;
   private String lastname;
   private String email;
-  private SubjectDTO subject;
+  private SubjectDto subject;
 
 }

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SubjectDTO {
+public class SubjectDto {
 
   private String name;
   private String description;

@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "subject")
-public class SubjectDAO {
+public class SubjectDao {
 
   @Id
   @JsonIgnore

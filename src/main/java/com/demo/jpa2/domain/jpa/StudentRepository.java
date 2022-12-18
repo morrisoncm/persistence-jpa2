@@ -1,12 +1,12 @@
 package com.demo.jpa2.domain.jpa;
 
-import com.demo.jpa2.domain.dao.StudentDAO;
+import com.demo.jpa2.domain.dao.StudentDao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StudentRepository extends JpaRepository<StudentDAO, Long> {
+public interface StudentRepository extends JpaRepository<StudentDao, Long> {
 
-  StudentDAO findByEmail(String email);
+  StudentDao findByEmail(String email);
 
 }

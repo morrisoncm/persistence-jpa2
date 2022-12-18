@@ -5,12 +5,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProfessorDTO {
+public class ProfessorDto {
 
   private String title;
   private String firstname;
   private String lastname;
   private String email;
-  private SubjectDTO subject;
+  private SubjectDto subject;
 
 }

@@ -1,17 +1,17 @@
 package com.demo.jpa2.service;
 
-import com.demo.jpa2.domain.dao.ProfessorDAO;
+import com.demo.jpa2.domain.dao.ProfessorDao;
 import java.util.List;
 
 public interface ProfessorService {
 
-  List<ProfessorDAO> getProfessors();
+  List<ProfessorDao> getProfessors();
 
-  ProfessorDAO getProfessor(String email);
+  ProfessorDao getProfessor(String email);
 
-  void registerProfessor(ProfessorDAO professor);
+  void registerProfessor(ProfessorDao professor);
 
-  void updateProfessorProfile(ProfessorDAO professor, String email);
+  void updateProfessorProfile(ProfessorDao professor, String email);
 
   void deleteProfesorProfile(String email);
 }

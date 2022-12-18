@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "professors_subjects")
-public class ProfessorSubjectDAO {
+public class ProfessorSubjectDao {
 
   private Long professorid;
-  private SubjectDAO subject;
+  private SubjectDao subject;
 
 }
