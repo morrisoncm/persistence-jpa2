@@ -1,6 +1,6 @@
 package com.demo.jpa2.controller;
 
-import com.demo.jpa2.domain.Professor;
+import com.demo.jpa2.domain.dao.ProfessorDAO;
 import com.demo.jpa2.service.ProfessorService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,23 +21,23 @@ public class ProfessorController {
   private ProfessorService professorService;
 
   @GetMapping
-  public List<Professor> getProfessors() {
+  public List<ProfessorDAO> getProfessors() {
     return professorService.getProfessors();
   }
 
   @GetMapping("/{email:.+}")
-  public Professor getProfessor(@PathVariable String email) {
+  public ProfessorDAO getProfessor(@PathVariable String email) {
     return professorService.getProfessor(email);
   }
 
   @PostMapping
-  public void registerProfessor(@RequestBody Professor professor) {
+  public void registerProfessor(@RequestBody ProfessorDAO professor) {
     professorService.registerProfessor(professor);
   }
 
   @PutMapping("/{email:.+}")
   public void updateProfessorProfile(
-      @RequestBody Professor professor,
+      @RequestBody ProfessorDAO professor,
       @PathVariable String email
   ) {
     professorService.updateProfessorProfile(professor, email);

@@ -1,7 +1,7 @@
 package com.demo.jpa2.service.impl;
 
-import com.demo.jpa2.dao.ProfessorRepository;
-import com.demo.jpa2.domain.Professor;
+import com.demo.jpa2.domain.jpa.ProfessorRepository;
+import com.demo.jpa2.domain.dao.ProfessorDAO;
 import com.demo.jpa2.service.ProfessorService;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -19,17 +19,17 @@ public class ProfessorServiceImpl implements ProfessorService {
   private ProfessorRepository professorRepository;
 
   @Override
-  public List<Professor> getProfessors() {
+  public List<ProfessorDAO> getProfessors() {
     return professorRepository.findAll();
   }
 
   @Override
-  public Professor getProfessor(String email) {
+  public ProfessorDAO getProfessor(String email) {
     return professorRepository.findByEmail(email);
   }
 
   @Override
-  public void registerProfessor(Professor professor) {
+  public void registerProfessor(ProfessorDAO professor) {
     if (!ObjectUtils.isEmpty(getProfessor(professor.getEmail()))) {
       log.error("registerProfessor() -> exception professor {} found", professor);
       throw new ResponseStatusException(HttpStatus.FOUND, "Professor Found");
@@ -44,7 +44,7 @@ public class ProfessorServiceImpl implements ProfessorService {
   }
 
   @Override
-  public void updateProfessorProfile(Professor professor, String email) {
+  public void updateProfessorProfile(ProfessorDAO professor, String email) {
     final var professorFromDb = getProfessor(email);
     if (ObjectUtils.isEmpty(professorFromDb)) {
       log.error(

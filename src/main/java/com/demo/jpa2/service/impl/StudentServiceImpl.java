@@ -1,7 +1,7 @@
 package com.demo.jpa2.service.impl;
 
-import com.demo.jpa2.dao.StudentRepository;
-import com.demo.jpa2.domain.Student;
+import com.demo.jpa2.domain.jpa.StudentRepository;
+import com.demo.jpa2.domain.dao.StudentDAO;
 import com.demo.jpa2.service.StudentService;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -19,17 +19,17 @@ public class StudentServiceImpl implements StudentService {
   private StudentRepository studentRepository;
 
   @Override
-  public List<Student> getStudents() {
+  public List<StudentDAO> getStudents() {
     return studentRepository.findAll();
   }
 
   @Override
-  public Student getStudent(String email) {
+  public StudentDAO getStudent(String email) {
     return studentRepository.findByEmail(email);
   }
 
   @Override
-  public void registerStudent(Student student) {
+  public void registerStudent(StudentDAO student) {
     if (!ObjectUtils.isEmpty(getStudent(student.getEmail()))) {
       log.error("registerStudent() -> exception student {} found", student);
       throw new ResponseStatusException(HttpStatus.FOUND, "Student Found");
@@ -43,7 +43,7 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-  public void updateStudentProfile(Student student, String email) {
+  public void updateStudentProfile(StudentDAO student, String email) {
     final var studentFromDb = getStudent(email);
     if (ObjectUtils.isEmpty(studentFromDb)) {
       log.error(
