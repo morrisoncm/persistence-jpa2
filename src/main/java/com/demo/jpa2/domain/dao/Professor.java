@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.Set;
 import lombok.AccessLevel;
@@ -33,7 +34,7 @@ public class Professor {
   @JoinTable(name = "professor_subjects",
       joinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
-  @ManyToMany
+  @OneToMany
   private Set<Subject> subjects;
 
   @Id
@@ -42,4 +43,5 @@ public class Professor {
   public Long getId() {
     return id;
   }
+
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.util.Set;
 import lombok.AccessLevel;
@@ -27,14 +28,14 @@ public class Subject {
   @Column(name = "description")
   private String description;
   @JoinTable(name = "student_subjects",
-      joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
+      joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
   @ManyToMany
   private Set<Student> students;
   @JoinTable(name = "professor_subjects",
-      joinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
-  @ManyToMany
+      joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
+  @ManyToOne
   private Professor professor;
 
   @Id
