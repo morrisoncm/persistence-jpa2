@@ -1,6 +1,6 @@
 package com.demo.jpa2.controller;
 
-import com.demo.jpa2.domain.dao.StudentDao;
+import com.demo.jpa2.domain.dao.Student;
 import com.demo.jpa2.service.StudentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,23 +21,23 @@ public class StudentController {
   private StudentService studentService;
 
   @GetMapping
-  public List<StudentDao> getStudents() {
+  public List<Student> getStudents() {
     return studentService.getStudents();
   }
 
   @GetMapping("/{email:.+}")
-  public StudentDao getStudent(@PathVariable String email) {
+  public Student getStudent(@PathVariable String email) {
     return studentService.getStudent(email);
   }
 
   @PostMapping
-  public void registerStudent(@RequestBody StudentDao student) {
+  public void registerStudent(@RequestBody Student student) {
     studentService.registerStudent(student);
   }
 
   @PutMapping("/{email:.+}")
   public void updateStudentProfile(
-      @RequestBody StudentDao student,
+      @RequestBody Student student,
       @PathVariable String email
   ) {
     studentService.updateStudentProfile(student, email);
@@ -47,4 +47,5 @@ public class StudentController {
   public void deleteStudentProfile(@PathVariable String email) {
     studentService.deleteStudentProfile(email);
   }
+
 }
