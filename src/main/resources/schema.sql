@@ -17,7 +17,7 @@ CREATE TABLE professor (
 
 CREATE TABLE subject (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(75) NOT NULL,
+  subject_name VARCHAR(75) NOT NULL,
   description VARCHAR (300) NOT NULL
 );
 

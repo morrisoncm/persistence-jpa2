@@ -17,24 +17,34 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-@Table(name="subject")
 public class Subject {
 
   @Getter(AccessLevel.NONE)
   private Long id;
-  @Column(name = "subject")
-  private String subject;
+  @Column(name = "subject_name")
+  private String subjectName;
   @Column(name = "description")
   private String description;
-  @JoinTable(name = "student_subjects",
-      joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
+
+  @JoinTable(
+    name = "student_subjects",
+    joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(
+      name = "student_id",
+      referencedColumnName = "id"
+    )
+  )
   @ManyToMany
   private Set<Student> students;
-  @JoinTable(name = "professor_subjects",
-      joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
+
+  @JoinTable(
+    name = "professor_subjects",
+    joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(
+      name = "professor_id",
+      referencedColumnName = "id"
+    )
+  )
   @ManyToOne
   private Professor professor;
 
