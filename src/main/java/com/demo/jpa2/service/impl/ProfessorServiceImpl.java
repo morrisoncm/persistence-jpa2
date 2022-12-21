@@ -55,7 +55,7 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
     try {
       professor.setEmail(email);
-      professor.setId(professorFromDb.getId());
+      professor.setProfessorId(professorFromDb.getProfessorId());
       professorRepository.save(professor);
     } catch (final Exception cause) {
       log.error("updateProfessorProfile() -> exception for student {}", professor, cause);

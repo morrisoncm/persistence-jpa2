@@ -22,13 +22,13 @@ CREATE TABLE subject (
 );
 
 CREATE TABLE students_subjects (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   student_id INT, FOREIGN KEY (student_id) REFERENCES student(id),
   subject_id INT, FOREIGN KEY (subject_id) REFERENCES subject(id)
 );
 
 CREATE TABLE professor_subjects (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   professor_id INT, FOREIGN KEY (professor_id) REFERENCES professor(id),
   subject_id INT, FOREIGN KEY (subject_id) REFERENCES subject(id)
 );

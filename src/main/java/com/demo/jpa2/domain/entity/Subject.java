@@ -21,12 +21,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "subject")
 public class Subject {
 
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+  private Long subjectId;
   @Column(name = "subject_name")
   private String subjectName;
   @Column(name = "description")

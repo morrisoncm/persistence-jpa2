@@ -18,12 +18,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "professor")
 public class Professor {
 
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+  private Long professorId;
   @Column(name = "title")
   private String title;
   @Column(name = "firstname")
@@ -34,6 +35,5 @@ public class Professor {
   private String email;
   @OneToMany
   private Set<Subject> professorSubjects = new HashSet<>();
-
 
 }

@@ -53,7 +53,7 @@ public class StudentServiceImpl implements StudentService {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
     }
     try {
-      student.setId(studentFromDb.getId());
+      student.setStudentId(studentFromDb.getStudentId());
       studentRepository.save(student);
     } catch (final Exception cause) {
       log.error("updateStudentProfile() -> exception for student {} because 400 Bad Request",
