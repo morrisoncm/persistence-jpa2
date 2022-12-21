@@ -20,11 +20,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "student")
 public class Student {
 
   @Id
-  @Column(name = "id")
+  @Column(name = "stu_id")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long studentId;
   @Column(name = "firstname")

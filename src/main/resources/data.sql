@@ -12,12 +12,12 @@ INSERT INTO subject (subject_name, description) VALUES
 ('Physics', 'The concepts of vectors and scalars using the kinematic equations, graphs of motion, and reference frames and relative motions');
 
 INSERT INTO students_subjects (student_id, subject_id) VALUES
-(SELECT id from student WHERE email = 'csinger@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'Maths'),
-(SELECT id from student WHERE email = 'csinger@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'English'),
-(SELECT id from student WHERE email = 'jthyme@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'Maths'),
-(SELECT id from student WHERE email = 'jthyme@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'Physics');
+(SELECT stu_id from student WHERE email = 'csinger@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
+(SELECT stu_id from student WHERE email = 'csinger@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'English'),
+(SELECT stu_id from student WHERE email = 'jthyme@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
+(SELECT stu_id from student WHERE email = 'jthyme@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Physics');
 
 INSERT INTO professor_subjects (professor_id, subject_id) VALUES
-(SELECT id from professor WHERE email = 'jpott@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'Maths'),
-(SELECT id from professor WHERE email = 'jpott@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'English'),
-(SELECT id from professor WHERE email = 'jwalker@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'Physics');
+(SELECT p_id from professor WHERE email = 'jpott@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
+(SELECT p_id from professor WHERE email = 'jpott@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'English'),
+(SELECT p_id from professor WHERE email = 'jwalker@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Physics');

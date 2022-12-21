@@ -21,11 +21,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "subject")
 public class Subject {
 
   @Id
-  @Column(name = "id")
+  @Column(name = "sub_id")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long subjectId;
   @Column(name = "subject_name")
@@ -34,20 +33,20 @@ public class Subject {
   private String description;
   @JoinTable(
     name = "students_subjects",
-    joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
+    joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "sub_id"),
     inverseJoinColumns = @JoinColumn(
       name = "student_id",
-      referencedColumnName = "id"
+      referencedColumnName = "stu_id"
     )
   )
   @ManyToMany
   private Set<Student> enrolledStudents = new HashSet<>();
   @JoinTable(
     name = "professor_subjects",
-    joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"),
+    joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "sub_id"),
     inverseJoinColumns = @JoinColumn(
       name = "professor_id",
-      referencedColumnName = "id"
+      referencedColumnName = "p_id"
     )
   )
   @ManyToOne
