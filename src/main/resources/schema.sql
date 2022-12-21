@@ -21,7 +21,7 @@ CREATE TABLE subject (
   description VARCHAR (300) NOT NULL
 );
 
-CREATE TABLE student_subjects (
+CREATE TABLE students_subjects (
   id INT AUTO_INCREMENT  PRIMARY KEY,
   student_id INT, FOREIGN KEY (student_id) REFERENCES student(id),
   subject_id INT, FOREIGN KEY (subject_id) REFERENCES subject(id)

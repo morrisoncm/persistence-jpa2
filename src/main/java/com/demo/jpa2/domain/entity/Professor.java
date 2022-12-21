@@ -7,8 +7,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.HashSet;
@@ -20,10 +18,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "professor")
 public class Professor {
 
-  @Getter(AccessLevel.NONE)
+  @Id
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   @Column(name = "title")
   private String title;
@@ -33,17 +32,8 @@ public class Professor {
   private String lastname;
   @Column(name = "email")
   private String email;
-  @JoinTable(name = "professor_subjects",
-      joinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  private Set<Subject> subjects = new HashSet<>();
+  @OneToMany
+  private Set<Subject> professorSubjects = new HashSet<>();
 
-  @Id
-  @Column(name = "id")
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  public Long getId() {
-    return id;
-  }
 
 }

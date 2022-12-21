@@ -1,4 +1,4 @@
-package com.demo.jpa2.repository;
+package com.demo.jpa2.domain.repository;
 
 import com.demo.jpa2.domain.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;

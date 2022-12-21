@@ -11,7 +11,7 @@ INSERT INTO subject (subject_name, description) VALUES
 ('English', 'Analyzing short stories and  novels including nonfiction, drama, poems, and myths'),
 ('Physics', 'The concepts of vectors and scalars using the kinematic equations, graphs of motion, and reference frames and relative motions');
 
-INSERT INTO student_subjects (student_id, subject_id) VALUES
+INSERT INTO students_subjects (student_id, subject_id) VALUES
 (SELECT id from student WHERE email = 'csinger@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'Maths'),
 (SELECT id from student WHERE email = 'csinger@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'English'),
 (SELECT id from student WHERE email = 'jthyme@myuniversity.edu', SELECT id FROM subject WHERE subject_name = 'Maths'),

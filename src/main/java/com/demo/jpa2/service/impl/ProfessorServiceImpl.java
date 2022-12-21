@@ -1,7 +1,7 @@
 package com.demo.jpa2.service.impl;
 
 import com.demo.jpa2.domain.entity.Professor;
-import com.demo.jpa2.repository.ProfessorRepository;
+import com.demo.jpa2.domain.repository.ProfessorRepository;
 import com.demo.jpa2.service.ProfessorService;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.demo.jpa2.service.impl;
 
 import com.demo.jpa2.domain.entity.Student;
-import com.demo.jpa2.repository.StudentRepository;
+import com.demo.jpa2.domain.repository.StudentRepository;
 import com.demo.jpa2.service.StudentService;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -20,20 +20,19 @@ public class StudentServiceImpl implements StudentService {
 
   @Override
   public List<Student> getStudents() {
-    List<Student> students = studentRepository.findAll();
-    return null;
+    return studentRepository.findAll();
   }
 
   @Override
   public Student getStudent(String email) {
-    Student student = studentRepository.findByEmail(email);
-    return null;
+    return studentRepository.findByEmail(email);
   }
 
   @Override
   public void registerStudent(Student student) {
     if (!ObjectUtils.isEmpty(getStudent(student.getEmail()))) {
-      log.error("registerStudent() -> exception student {} 302 found", student);
+      log.error("registerStudent() -> exception student {} email {} 302 found", student,
+          student.getEmail());
       throw new ResponseStatusException(HttpStatus.FOUND, "Student found");
     }
     try {
@@ -49,14 +48,16 @@ public class StudentServiceImpl implements StudentService {
     final var studentFromDb = studentRepository.findByEmail(email);
     if (ObjectUtils.isEmpty(studentFromDb)) {
       log.error(
-          "updateStudentProfile() -> exception for student {} and email {} 404 not found",
+          "updateStudentProfile() -> exception for student {} and email {} because 404 Not Found",
           student, email);
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
     }
     try {
-      studentRepository.save(null);
+      student.setId(studentFromDb.getId());
+      studentRepository.save(student);
     } catch (final Exception cause) {
-      log.error("updateStudentProfile() -> exception for student {}", null, cause);
+      log.error("updateStudentProfile() -> exception for student {} because 400 Bad Request",
+          student, cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student not updated");
     }
   }
@@ -65,14 +66,15 @@ public class StudentServiceImpl implements StudentService {
   public void deleteStudentProfile(String email) {
     final var studentFromDb = studentRepository.findByEmail(email);
     if (ObjectUtils.isEmpty(studentFromDb)) {
-      log.error("updateStudentProfile() -> exception for email {} because not found", email);
+      log.error("deleteStudentProfile() -> exception for email {} because 404 Not Found", email);
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student email not found");
     }
     try {
       studentRepository.delete(studentFromDb);
     } catch (final Exception cause) {
-      log.error("updateStudentProfile() -> exception for studentFromDb {}", studentFromDb, cause);
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student found but update failed");
+      log.error("deleteStudentProfile() -> exception for student {}", studentFromDb, cause);
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+          "Student email found although update failed");
     }
   }
 
