@@ -1,4 +1,4 @@
-package com.demo.jpa2.domain.dao;
+package com.demo.jpa2.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

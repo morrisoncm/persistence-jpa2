@@ -1,15 +1,17 @@
-package com.demo.jpa2.domain.dao;
+package com.demo.jpa2.domain.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -34,8 +36,8 @@ public class Professor {
   @JoinTable(name = "professor_subjects",
       joinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
-  @OneToMany
-  private Set<Subject> subjects;
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private Set<Subject> subjects = new HashSet<>();
 
   @Id
   @Column(name = "id")

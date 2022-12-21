@@ -1,6 +1,6 @@
-package com.demo.jpa2.domain.jpa;
+package com.demo.jpa2.repository;
 
-import com.demo.jpa2.domain.dao.Student;
+import com.demo.jpa2.domain.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

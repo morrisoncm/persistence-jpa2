@@ -1,7 +1,8 @@
 package com.demo.jpa2.controller;
 
-import com.demo.jpa2.domain.dao.Professor;
+import com.demo.jpa2.domain.entity.Professor;
 import com.demo.jpa2.service.ProfessorService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,15 +32,13 @@ public class ProfessorController {
   }
 
   @PostMapping
-  public void registerProfessor(@RequestBody Professor professor) {
+  public void registerProfessor(@Valid @RequestBody Professor professor) {
     professorService.registerProfessor(professor);
   }
 
   @PutMapping("/{email:.+}")
-  public void updateProfessorProfile(
-      @RequestBody Professor professor,
-      @PathVariable String email
-  ) {
+  public void updateProfessorProfile(@Valid @RequestBody Professor professor,
+      @PathVariable String email) {
     professorService.updateProfessorProfile(professor, email);
   }
 
@@ -47,4 +46,5 @@ public class ProfessorController {
   public void deleteProfesorProfile(@PathVariable String email) {
     professorService.deleteProfesorProfile(email);
   }
+
 }

@@ -1,7 +1,8 @@
 package com.demo.jpa2.controller;
 
-import com.demo.jpa2.domain.dao.Student;
+import com.demo.jpa2.domain.entity.Student;
 import com.demo.jpa2.service.StudentService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,15 +32,13 @@ public class StudentController {
   }
 
   @PostMapping
-  public void registerStudent(@RequestBody Student student) {
+  public void registerStudent(@Valid @RequestBody Student student) {
     studentService.registerStudent(student);
   }
 
   @PutMapping("/{email:.+}")
-  public void updateStudentProfile(
-      @RequestBody Student student,
-      @PathVariable String email
-  ) {
+  public void updateStudentProfile(@Valid @RequestBody Student student,
+      @PathVariable String email) {
     studentService.updateStudentProfile(student, email);
   }
 

@@ -1,6 +1,6 @@
 package com.demo.jpa2.service;
 
-import com.demo.jpa2.domain.dao.Professor;
+import com.demo.jpa2.domain.entity.Professor;
 import java.util.List;
 
 public interface ProfessorService {
@@ -14,4 +14,5 @@ public interface ProfessorService {
   void updateProfessorProfile(Professor professor, String email);
 
   void deleteProfesorProfile(String email);
+
 }
