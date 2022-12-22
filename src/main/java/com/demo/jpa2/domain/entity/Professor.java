@@ -1,17 +1,13 @@
 package com.demo.jpa2.domain.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +29,6 @@ public class Professor {
   @Column(name = "email")
   private String email;
   @OneToMany
-  private Set<Subject> professorSubjects = new HashSet<>();
+  private Set<EnrolledSubject> professorSubjects = new HashSet<>();
 
 }
