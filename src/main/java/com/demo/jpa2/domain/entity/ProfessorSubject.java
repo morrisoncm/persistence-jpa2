@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="subject")
+@Table(name = "subject")
 public class ProfessorSubject {
 
   @Id
@@ -30,7 +30,7 @@ public class ProfessorSubject {
   private String description;
   @JsonIgnore
   @JoinTable(
-      name="professor_subject",
+      name = "professor_subject",
       joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "sub_id"),
       inverseJoinColumns = @JoinColumn(
           name = "professor_id",

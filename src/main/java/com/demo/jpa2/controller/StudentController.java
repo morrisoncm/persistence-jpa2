@@ -32,8 +32,8 @@ public class StudentController {
   }
 
   @PostMapping
-  public void registerStudent(@Valid @RequestBody Student student) {
-    studentService.registerStudent(student);
+  public void enrollStudent(@Valid @RequestBody Student student) {
+    studentService.enrollStudent(student);
   }
 
   @PutMapping("/{email:.+}")

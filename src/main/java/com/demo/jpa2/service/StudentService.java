@@ -9,7 +9,7 @@ public interface StudentService {
 
   Student getStudent(String email);
 
-  void registerStudent(Student student);
+  void enrollStudent(Student student);
 
   void updateStudentProfile(Student student, String email);
 

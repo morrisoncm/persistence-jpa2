@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-  public void registerStudent(Student student) {
+  public void enrollStudent(Student student) {
     if (!ObjectUtils.isEmpty(getStudent(student.getEmail()))) {
       log.error("registerStudent() -> exception student {} email {} 302 found", student,
           student.getEmail());

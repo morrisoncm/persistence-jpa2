@@ -6,12 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "subject")
-public class EnrolledSubject {
+public class Subject {
 
   @Id
   @JsonIgnore
@@ -30,16 +25,5 @@ public class EnrolledSubject {
   private String subjectName;
   @Column(name = "description")
   private String description;
-  @JsonIgnore
-  @JoinTable(
-      name = "student_subject",
-      joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "sub_id"),
-      inverseJoinColumns = @JoinColumn(
-          name = "student_id",
-          referencedColumnName = "stu_id"
-      )
-  )
-  @ManyToMany
-  private Set<Student> enrolledStudents = new HashSet<>();
 
 }
