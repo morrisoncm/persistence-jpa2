@@ -54,7 +54,6 @@ public class ProfessorServiceImpl implements ProfessorService {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor Not Found");
     }
     try {
-      professor.setEmail(email);
       professor.setProfessorId(professorFromDb.getProfessorId());
       professorRepository.save(professor);
     } catch (final Exception cause) {
@@ -68,7 +67,7 @@ public class ProfessorServiceImpl implements ProfessorService {
     final var professorFromDb = getProfessor(email);
     if (ObjectUtils.isEmpty(professorFromDb)) {
       log.error("deleteProfesorProfile() -> exception for email {} because not found", email);
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor Not Found");
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor Not Found By Email");
     }
     try {
       professorRepository.delete(professorFromDb);

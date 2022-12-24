@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS student, professor, subject, students_subjects, professor_subjects;
+DROP TABLE IF EXISTS student, professor, subject, student_subject, professor_subject;
 
 CREATE TABLE student (
   stu_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -21,14 +21,12 @@ CREATE TABLE subject (
   description VARCHAR (300) NOT NULL
 );
 
-CREATE TABLE students_subjects (
-  stu_sub_id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE student_subject (
   student_id INT, FOREIGN KEY (student_id) REFERENCES student(stu_id),
   subject_id INT, FOREIGN KEY (subject_id) REFERENCES subject(sub_id)
 );
 
-CREATE TABLE professor_subjects (
-  p_sub_id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE professor_subject (
   professor_id INT, FOREIGN KEY (professor_id) REFERENCES professor(p_id),
   subject_id INT, FOREIGN KEY (subject_id) REFERENCES subject(sub_id)
 );

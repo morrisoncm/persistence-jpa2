@@ -11,13 +11,13 @@ INSERT INTO subject (subject_name, description) VALUES
 ('English', 'Analyzing short stories and  novels including nonfiction, drama, poems, and myths'),
 ('Physics', 'The concepts of vectors and scalars using the kinematic equations, graphs of motion, and reference frames and relative motions');
 
-INSERT INTO students_subjects (student_id, subject_id) VALUES
+INSERT INTO student_subject (student_id, subject_id) VALUES
 (SELECT stu_id from student WHERE email = 'csinger@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
 (SELECT stu_id from student WHERE email = 'csinger@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'English'),
 (SELECT stu_id from student WHERE email = 'jthyme@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
 (SELECT stu_id from student WHERE email = 'jthyme@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Physics');
 
-INSERT INTO professor_subjects (professor_id, subject_id) VALUES
+INSERT INTO professor_subject (professor_id, subject_id) VALUES
 (SELECT p_id from professor WHERE email = 'jpott@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
 (SELECT p_id from professor WHERE email = 'jpott@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'English'),
 (SELECT p_id from professor WHERE email = 'jwalker@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Physics');
