@@ -19,7 +19,7 @@ public class Subject {
   @Id
   @JsonIgnore
   @Column(name = "sub_id")
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long subjectId;
   @Column(name = "subject_name")
   private String subjectName;

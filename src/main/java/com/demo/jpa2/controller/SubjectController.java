@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 @RequestMapping("/jpa2/subjects")
 public class SubjectController {
 
@@ -19,8 +21,8 @@ public class SubjectController {
   private SubjectService subjectService;
 
   @GetMapping
-  public List<Subject> getSubjects(@RequestBody List<String> subjectNames) {
-    return subjectService.getSubjects(subjectNames);
+  public List<Subject> getSubjects() {
+    return subjectService.getSubjects();
   }
 
   @GetMapping("/{subjectName}")
@@ -42,4 +44,5 @@ public class SubjectController {
   public void deleteSubjectProfile(@PathVariable String subjectName) {
     subjectService.deleteSubjectProfile(subjectName);
   }
+
 }

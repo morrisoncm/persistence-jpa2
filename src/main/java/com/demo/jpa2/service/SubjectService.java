@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface SubjectService {
 
-  List<Subject> getSubjects(List<String> subjectNames);
+  List<Subject> getSubjects();
 
   Subject getSubject(String subjectName);
 

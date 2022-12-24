@@ -22,7 +22,7 @@ public class Student {
   @Id
   @JsonIgnore
   @Column(name = "stu_id")
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long studentId;
   @Column(name = "firstname")
   private String firstname;

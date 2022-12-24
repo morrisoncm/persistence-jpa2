@@ -5,15 +5,17 @@ import com.demo.jpa2.domain.repository.SubjectRepository;
 import com.demo.jpa2.service.SubjectService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SubjectServiceImpl implements SubjectService {
 
   @Autowired
   private SubjectRepository subjectRepository;
 
   @Override
-  public List<Subject> getSubjects(List<String> subjectNames) {
-    return subjectRepository.findBySubjectNames(subjectNames);
+  public List<Subject> getSubjects() {
+    return subjectRepository.findAll();
   }
 
   @Override
@@ -36,7 +38,7 @@ public class SubjectServiceImpl implements SubjectService {
   @Override
   public void deleteSubjectProfile(String subjectName) {
     Subject subject = subjectRepository.findBySubjectName(subjectName);
-    subjectRepository.save(subject);
+    subjectRepository.delete(subject);
   }
 
 }
