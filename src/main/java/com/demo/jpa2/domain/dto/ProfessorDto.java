@@ -17,14 +17,11 @@ public class ProfessorDto {
   private String firstname;
   private String lastname;
   private String email;
-
   @JsonFormat(pattern = "yyyy-MM-dd")
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
   private LocalDate createDate;
-
   @JsonFormat(pattern = "yyyy-MM-dd")
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
   private LocalDate editDate;
-
   private Set<ProfessorSubjectDto> professorSubjects = new HashSet<>();
 }
