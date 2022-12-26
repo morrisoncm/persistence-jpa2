@@ -2,6 +2,8 @@ package com.demo.jpa2.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 @Setter
 @Entity
 @Table(name = "professor")
+@JsonInclude(Include.NON_NULL)
 public class Professor {
 
   @Id
@@ -46,6 +49,5 @@ public class Professor {
   private LocalDate editDate;
   @OneToMany(mappedBy = "subjectProfessor")
   private Set<ProfessorSubject> professorSubjects = new HashSet<>();
-
 
 }
