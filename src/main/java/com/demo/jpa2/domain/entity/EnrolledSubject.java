@@ -1,5 +1,6 @@
 package com.demo.jpa2.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,10 +11,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Getter
 @Setter
@@ -30,6 +34,14 @@ public class EnrolledSubject {
   private String subjectName;
   @Column(name = "description")
   private String description;
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
+  @Column(name = "create_date")
+  private LocalDate createDate;
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
+  @Column(name = "edit_date")
+  private LocalDate editDate;
   @JsonIgnore
   @JoinTable(
       name = "student_subject",

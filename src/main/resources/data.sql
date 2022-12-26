@@ -1,23 +1,23 @@
-INSERT INTO student (firstName, lastName, email) VALUES
-('Carole', 'Singer', 'csinger@myuniversity.edu'),
-('Justin', 'Thyme', 'jthyme@myuniversity.edu');
+insert into student (firstName, lastName, email, create_date, edit_date) values
+('Carole', 'Singer', 'csinger@myuniversity.edu', CURRENT_DATE, NULL),
+('Justin', 'Thyme', 'jthyme@myuniversity.edu', CURRENT_DATE, NULL);
 
-INSERT INTO professor (title, firstName, lastName, email) VALUES
-('Dr.', 'Jay', 'Walker', 'jwalker@myuniversity.edu'),
-('Dr.', 'Jack', 'Pott', 'jpott@myuniversity.edu');
+insert into professor (title, firstName, lastName, email, create_date, edit_date) values
+('Dr.', 'Jay', 'Walker', 'jwalker@myuniversity.edu', CURRENT_DATE, NULL),
+('Dr.', 'Jack', 'Pott', 'jpott@myuniversity.edu', CURRENT_DATE, NULL);
 
-INSERT INTO subject (subject_name, description) VALUES
-('Maths', 'Teaching and learning how to solve problems using algorithms and formulas necessary for computations.'),
-('English', 'Analyzing short stories and  novels including nonfiction, drama, poems, and myths'),
-('Physics', 'The concepts of vectors and scalars using the kinematic equations, graphs of motion, and reference frames and relative motions');
+insert into subject (subject_name, description, create_date, edit_date) values
+('Maths', 'Teaching and learning how to solve problems using algorithms and formulas necessary for computations.', CURRENT_DATE, NULL),
+('English', 'Analyzing short stories and  novels including nonfiction, drama, poems, and myths', CURRENT_DATE, NULL),
+('Physics', 'The concepts of vectors and scalars using the kinematic equations, graphs of motion, and reference frames and relative motions', CURRENT_DATE, NULL);
 
-INSERT INTO student_subject (student_id, subject_id) VALUES
-(SELECT stu_id from student WHERE email = 'csinger@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
-(SELECT stu_id from student WHERE email = 'csinger@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'English'),
-(SELECT stu_id from student WHERE email = 'jthyme@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
-(SELECT stu_id from student WHERE email = 'jthyme@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Physics');
+insert into student_subject (student_id, subject_id, create_date, edit_date) values
+(select stu_id from student where email = 'csinger@myuniversity.edu', select sub_id from subject where subject_name = 'Maths', CURRENT_DATE, NULL),
+(select stu_id from student where email = 'csinger@myuniversity.edu', select sub_id from subject where subject_name = 'English', CURRENT_DATE, NULL),
+(select stu_id from student where email = 'jthyme@myuniversity.edu', select sub_id from subject where subject_name = 'Maths', CURRENT_DATE, NULL),
+(select stu_id from student where email = 'jthyme@myuniversity.edu', select sub_id from subject where subject_name = 'Physics', CURRENT_DATE, NULL);
 
-INSERT INTO professor_subject (professor_id, subject_id) VALUES
-(SELECT p_id from professor WHERE email = 'jpott@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Maths'),
-(SELECT p_id from professor WHERE email = 'jpott@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'English'),
-(SELECT p_id from professor WHERE email = 'jwalker@myuniversity.edu', SELECT sub_id FROM subject WHERE subject_name = 'Physics');
+insert into professor_subject (professor_id, subject_id, create_date, edit_date) values
+(select p_id from professor where email = 'jpott@myuniversity.edu', select sub_id from subject where subject_name = 'Maths', CURRENT_DATE, NULL),
+(select p_id from professor where email = 'jpott@myuniversity.edu', select sub_id from subject where subject_name = 'English', CURRENT_DATE, NULL),
+(select p_id from professor where email = 'jwalker@myuniversity.edu', select sub_id from subject where subject_name = 'Physics', CURRENT_DATE, NULL);
