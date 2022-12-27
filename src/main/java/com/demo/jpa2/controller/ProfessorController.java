@@ -25,7 +25,7 @@ public class ProfessorController {
   private ProfessorService professorService;
 
   @GetMapping
-  public List<ProfessorDto> getProfessors() throws Exception {
+  public List<ProfessorDto> getProfessors() {
     List<Professor> professors = professorService.getProfessors();
     return EntityToDto.getProfessors(professors);
   }

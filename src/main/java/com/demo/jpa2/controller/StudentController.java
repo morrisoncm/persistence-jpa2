@@ -2,6 +2,7 @@ package com.demo.jpa2.controller;
 
 import com.demo.jpa2.domain.dto.StudentDto;
 import com.demo.jpa2.domain.entity.Student;
+import com.demo.jpa2.mappings.DtoToEntity;
 import com.demo.jpa2.mappings.EntityToDto;
 import com.demo.jpa2.service.StudentService;
 import java.time.LocalDate;
@@ -37,15 +38,17 @@ public class StudentController {
   }
 
   @PostMapping
-  public void enrollStudent(@RequestBody @Validated Student student) {
-    student.setCreateDate(LocalDate.now());
+  public void enrollStudent(@RequestBody @Validated StudentDto studentDto) {
+    studentDto.setCreateDate(LocalDate.now());
+    Student student = DtoToEntity.getStudent(studentDto);
     studentService.enrollStudent(student);
   }
 
   @PutMapping("/{email:.+}")
-  public void updateStudentProfile(@RequestBody @Validated Student student,
+  public void updateStudentProfile(@RequestBody @Validated StudentDto studentDto,
       @PathVariable String email) {
-    student.setEditDate(LocalDate.now());
+    studentDto.setEditDate(LocalDate.now());
+    Student student = DtoToEntity.getStudent(studentDto);
     studentService.updateStudentProfile(student, email);
   }
 
