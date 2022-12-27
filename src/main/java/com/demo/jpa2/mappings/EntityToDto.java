@@ -51,10 +51,10 @@ public class EntityToDto {
 
   public static List<SubjectDto> getSubjects(List<Subject> subjects) {
     List<SubjectDto> subjectDtos = new ArrayList<>();
-    subjects.stream().forEach(project -> {
+    subjects.stream().forEach(subject -> {
       try {
         SubjectDto subjectDto = new SubjectDto();
-        copyProperties(subjectDto, subjects);
+        copyProperties(subjectDto, subject);
         subjectDtos.add(subjectDto);
       } catch (Exception e) {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Subjects mapping failed");
@@ -69,7 +69,7 @@ public class EntityToDto {
       copyProperties(studentDto, student);
       return studentDto;
     } catch (Exception e) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Subject mapping failed");
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student mapping failed");
     }
   }
 
