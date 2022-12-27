@@ -2,6 +2,7 @@ package com.demo.jpa2.controller;
 
 import com.demo.jpa2.domain.dto.ProfessorDto;
 import com.demo.jpa2.domain.entity.Professor;
+import com.demo.jpa2.mappings.DtoToEntity;
 import com.demo.jpa2.mappings.EntityToDto;
 import com.demo.jpa2.service.ProfessorService;
 import java.time.LocalDate;
@@ -38,15 +39,17 @@ public class ProfessorController {
   }
 
   @PostMapping
-  public void registerProfessor(@Validated @RequestBody Professor professor) {
-    professor.setCreateDate(LocalDate.now());
+  public void registerProfessor(@Validated @RequestBody ProfessorDto professorDto) {
+    professorDto.setCreateDate(LocalDate.now());
+    Professor professor = DtoToEntity.getProfessor(professorDto);
     professorService.registerProfessor(professor);
   }
 
   @PutMapping("/{email:.+}")
-  public void updateProfessorProfile(@Validated @RequestBody Professor professor,
+  public void updateProfessorProfile(@Validated @RequestBody ProfessorDto professorDto,
       @PathVariable String email) {
-    professor.setEditDate(LocalDate.now());
+    professorDto.setEditDate(LocalDate.now());
+    Professor professor = DtoToEntity.getProfessor(professorDto);
     professorService.updateProfessorProfile(professor, email);
   }
 
