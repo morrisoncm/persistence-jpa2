@@ -32,8 +32,7 @@ public class ProfessorController {
   }
 
   @GetMapping("/{email:.+}")
-  public ProfessorDto getProfessor(@PathVariable String email)
-      throws Exception {
+  public ProfessorDto getProfessor(@PathVariable String email) {
     Professor professor = professorService.getProfessor(email);
     return EntityToDto.getProfessor(professor);
   }
