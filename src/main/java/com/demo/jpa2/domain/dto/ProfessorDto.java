@@ -27,4 +27,5 @@ public class ProfessorDto {
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
   private LocalDate editDate;
   private Set<ProfessorSubjectDto> teachesSubjects = new HashSet<>();
+
 }

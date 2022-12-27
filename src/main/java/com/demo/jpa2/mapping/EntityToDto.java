@@ -10,9 +10,11 @@ import com.demo.jpa2.domain.entity.Student;
 import com.demo.jpa2.domain.entity.Subject;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+@Slf4j
 public class EntityToDto {
 
   public static ProfessorDto getProfessor(Professor professor) {
@@ -20,7 +22,8 @@ public class EntityToDto {
       ProfessorDto professorDto = new ProfessorDto();
       copyProperties(professorDto, professor);
       return professorDto;
-    } catch (Exception e) {
+    } catch (Exception cause) {
+      log.error("getProfessor() -> mapping failed", cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Professor mapping failed");
     }
   }
@@ -32,7 +35,8 @@ public class EntityToDto {
         ProfessorDto professorDto = new ProfessorDto();
         copyProperties(professorDto, project);
         professorDtos.add(professorDto);
-      } catch (Exception e) {
+      } catch (Exception cause) {
+        log.error("getProfessors() -> mapping failed", cause);
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Professors mapping failed");
       }
     });
@@ -44,7 +48,8 @@ public class EntityToDto {
       SubjectDto subjectDto = new SubjectDto();
       copyProperties(subjectDto, subject);
       return subjectDto;
-    } catch (Exception e) {
+    } catch (Exception cause) {
+      log.error("getSubject() -> mapping failed", cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Subject mapping failed");
     }
   }
@@ -56,7 +61,8 @@ public class EntityToDto {
         SubjectDto subjectDto = new SubjectDto();
         copyProperties(subjectDto, subject);
         subjectDtos.add(subjectDto);
-      } catch (Exception e) {
+      } catch (Exception cause) {
+        log.error("getSubjects() -> mapping failed", cause);
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Subjects mapping failed");
       }
     });
@@ -68,7 +74,8 @@ public class EntityToDto {
       StudentDto studentDto = new StudentDto();
       copyProperties(studentDto, student);
       return studentDto;
-    } catch (Exception e) {
+    } catch (Exception cause) {
+      log.error("getStudent() -> mapping failed", cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student mapping failed");
     }
   }
@@ -80,7 +87,8 @@ public class EntityToDto {
         StudentDto studentDto = new StudentDto();
         copyProperties(studentDto, student);
         studentDtos.add(studentDto);
-      } catch (Exception e) {
+      } catch (Exception cause) {
+        log.error("getStudents() -> mapping failed", cause);
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Students mapping failed");
       }
     });

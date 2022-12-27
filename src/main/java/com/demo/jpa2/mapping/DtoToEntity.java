@@ -8,9 +8,11 @@ import com.demo.jpa2.domain.dto.SubjectDto;
 import com.demo.jpa2.domain.entity.Professor;
 import com.demo.jpa2.domain.entity.Student;
 import com.demo.jpa2.domain.entity.Subject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+@Slf4j
 public class DtoToEntity {
 
   public static Subject getSubject(SubjectDto subjectDto) {
@@ -19,6 +21,7 @@ public class DtoToEntity {
       copyProperties(subject, subjectDto);
       return subject;
     } catch (Exception cause) {
+      log.error("getSubject() -> mappig failed ", cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Subject mapping failed");
     }
   }
@@ -29,6 +32,7 @@ public class DtoToEntity {
       copyProperties(student, studentDto);
       return student;
     } catch (Exception cause) {
+      log.error("getStudent() -> mappig failed ", cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Student mapping failed");
     }
   }
@@ -39,6 +43,7 @@ public class DtoToEntity {
       copyProperties(professor, professorDto);
       return professor;
     } catch (Exception cause) {
+      log.error("getProfessor() -> mapping failed ", cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Professor mapping failed");
     }
   }
