@@ -1,9 +1,13 @@
 package com.demo.jpa2.controller;
 
+import com.demo.jpa2.domain.dto.SubjectDto;
 import com.demo.jpa2.domain.entity.Subject;
+import com.demo.jpa2.mappings.EntityToDto;
 import com.demo.jpa2.service.SubjectService;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,22 +25,27 @@ public class SubjectController {
   private SubjectService subjectService;
 
   @GetMapping
-  public List<Subject> getSubjects() {
-    return subjectService.getSubjects();
+  public List<SubjectDto> getSubjects() {
+    List<Subject> subjects = subjectService.getSubjects();
+    return EntityToDto.getSubjects(subjects);
   }
 
   @GetMapping("/{subjectName}")
-  public Subject getSubject(@PathVariable String subjectName) {
-    return subjectService.getSubject(subjectName);
+  public SubjectDto getSubject(@PathVariable String subjectName) {
+    Subject subject = subjectService.getSubject(subjectName);
+    return EntityToDto.getSubject(subject);
   }
 
   @PostMapping
-  public void createSubject(@RequestBody Subject subject) {
+  public void createSubject(@RequestBody @Validated Subject subject) {
+    subject.setCreateDate(LocalDate.now());
     subjectService.createSubject(subject);
   }
 
   @PutMapping("/{subjectName}")
-  public void updateSubjectProfile(@RequestBody Subject subject, @PathVariable String subjectName) {
+  public void updateSubjectProfile(@RequestBody @Validated Subject subject,
+      @PathVariable String subjectName) {
+    subject.setEditDate(LocalDate.now());
     subjectService.updateSubjectProfile(subject, subjectName);
   }
 

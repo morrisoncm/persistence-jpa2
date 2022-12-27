@@ -3,6 +3,7 @@ package com.demo.jpa2.service.impl;
 import com.demo.jpa2.domain.entity.Subject;
 import com.demo.jpa2.domain.repository.SubjectRepository;
 import com.demo.jpa2.service.SubjectService;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ public class SubjectServiceImpl implements SubjectService {
   public void updateSubjectProfile(Subject subject, String subjectName) {
     Subject subjectFromDb = subjectRepository.findBySubjectName(subjectName);
     subject.setSubjectId(subjectFromDb.getSubjectId());
+    subject.setCreateDate(LocalDate.now());
     subjectRepository.save(subject);
   }
 

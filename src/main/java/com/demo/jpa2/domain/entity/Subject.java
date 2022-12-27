@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,17 +26,21 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 public class Subject {
 
   @Id
-  @JsonIgnore
   @Column(name = "sub_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonIgnore
   private Long subjectId;
   @Column(name = "subject_name")
+  @NotBlank
+  @Size(min = 1, max = 50)
   private String subjectName;
   @Column(name = "description")
+  @NotBlank
+  @Size(min = 1, max = 300)
   private String description;
   @JsonFormat(pattern = "yyyy-MM-dd")
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
-  @Column(name = "create_date")
+  @Column(name = "create_date", nullable = false)
   private LocalDate createDate;
   @JsonFormat(pattern = "yyyy-MM-dd")
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")

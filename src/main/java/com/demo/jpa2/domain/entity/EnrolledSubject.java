@@ -13,6 +13,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,23 +32,26 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 public class EnrolledSubject {
 
   @Id
-  @JsonIgnore
   @Column(name = "sub_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonIgnore
   private Long subjectId;
+  @NotBlank
+  @Max(50)
   @Column(name = "subject_name")
   private String subjectName;
+  @NotBlank
+  @Max(300)
   @Column(name = "description")
   private String description;
   @JsonFormat(pattern = "yyyy-MM-dd")
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
-  @Column(name = "create_date")
+  @Column(name = "create_date", nullable = false)
   private LocalDate createDate;
   @JsonFormat(pattern = "yyyy-MM-dd")
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
   @Column(name = "edit_date")
   private LocalDate editDate;
-  @JsonIgnore
   @JoinTable(
       name = "student_subject",
       joinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "sub_id"),
@@ -55,6 +61,8 @@ public class EnrolledSubject {
       )
   )
   @ManyToMany
+  @JsonIgnore
+  @Valid
   private Set<Student> enrolledStudents = new HashSet<>();
 
 }

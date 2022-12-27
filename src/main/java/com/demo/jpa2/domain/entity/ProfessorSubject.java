@@ -13,6 +13,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,17 +29,19 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 public class ProfessorSubject {
 
   @Id
-  @JsonIgnore
   @Column(name = "sub_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonIgnore
   private Long subjectId;
   @Column(name = "subject_name")
+  @Max(50)
   private String subjectName;
   @Column(name = "description")
+  @Max(300)
   private String description;
   @JsonFormat(pattern = "yyyy-MM-dd")
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
-  @Column(name = "create_date")
+  @Column(name = "create_date", nullable = false)
   private LocalDate createDate;
   @JsonFormat(pattern = "yyyy-MM-dd")
   @DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-MM-dd")
@@ -53,6 +57,7 @@ public class ProfessorSubject {
       )
   )
   @ManyToOne
+  @Valid
   private Professor subjectProfessor;
 
 }
