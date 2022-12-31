@@ -30,7 +30,7 @@ public class EntityToDto {
 
   public static List<ProfessorDto> getProfessors(List<Professor> professors) {
     List<ProfessorDto> professorDtos = new ArrayList<>();
-    professors.stream().forEach(project -> {
+    professors.forEach(project -> {
       try {
         ProfessorDto professorDto = new ProfessorDto();
         copyProperties(professorDto, project);
@@ -56,7 +56,7 @@ public class EntityToDto {
 
   public static List<SubjectDto> getSubjects(List<Subject> subjects) {
     List<SubjectDto> subjectDtos = new ArrayList<>();
-    subjects.stream().forEach(subject -> {
+    subjects.forEach(subject -> {
       try {
         SubjectDto subjectDto = new SubjectDto();
         copyProperties(subjectDto, subject);
@@ -82,7 +82,7 @@ public class EntityToDto {
 
   public static List<StudentDto> getStudents(List<Student> students) {
     List<StudentDto> studentDtos = new ArrayList<>();
-    students.stream().forEach(student -> {
+    students.forEach(student -> {
       try {
         StudentDto studentDto = new StudentDto();
         copyProperties(studentDto, student);

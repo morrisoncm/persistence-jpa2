@@ -1,11 +1,13 @@
 package com.demo.jpa2.service.impl;
 
 import com.demo.jpa2.domain.entity.Professor;
-import com.demo.jpa2.domain.repository.ProfessorRepository;
+import com.demo.jpa2.repository.ProfessorRepository;
 import com.demo.jpa2.service.ProfessorService;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -13,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Slf4j
 @Service
+@Transactional
 public class ProfessorServiceImpl implements ProfessorService {
 
   @Autowired
@@ -20,7 +23,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 
   @Override
   public List<Professor> getProfessors() {
-    return professorRepository.findAll();
+    return professorRepository.findAll(Sort.by(Sort.Direction.ASC, "email"));
   }
 
   @Override

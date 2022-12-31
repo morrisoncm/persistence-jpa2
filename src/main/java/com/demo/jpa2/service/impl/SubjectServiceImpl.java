@@ -1,14 +1,17 @@
 package com.demo.jpa2.service.impl;
 
 import com.demo.jpa2.domain.entity.Subject;
-import com.demo.jpa2.domain.repository.SubjectRepository;
+import com.demo.jpa2.repository.SubjectRepository;
 import com.demo.jpa2.service.SubjectService;
+import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class SubjectServiceImpl implements SubjectService {
 
   @Autowired
@@ -16,7 +19,7 @@ public class SubjectServiceImpl implements SubjectService {
 
   @Override
   public List<Subject> getSubjects() {
-    return subjectRepository.findAll();
+    return subjectRepository.findAll(Sort.by(Sort.Direction.ASC, "subjectName"));
   }
 
   @Override

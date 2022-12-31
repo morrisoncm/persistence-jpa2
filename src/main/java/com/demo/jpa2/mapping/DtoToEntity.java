@@ -8,6 +8,8 @@ import com.demo.jpa2.domain.dto.SubjectDto;
 import com.demo.jpa2.domain.entity.Professor;
 import com.demo.jpa2.domain.entity.Student;
 import com.demo.jpa2.domain.entity.Subject;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,6 +25,21 @@ public class DtoToEntity {
     } catch (Exception cause) {
       log.error("getSubject() -> mappig failed ", cause);
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Subject mapping failed");
+    }
+  }
+
+  public static List<Subject> getSubjects(List<SubjectDto> subjectDtos) {
+    try {
+      List<Subject> subjects = new ArrayList<>();
+      for (SubjectDto subjectDto : subjectDtos) {
+        Subject subject = new Subject();
+        copyProperties(subject, subjectDto);
+        subjects.add(subject);
+      }
+      return subjects;
+    } catch (Exception cause) {
+      log.error("getSubjects() -> mappig failed ", cause);
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Subjects mapping failed");
     }
   }
 

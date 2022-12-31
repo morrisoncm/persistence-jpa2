@@ -31,6 +31,12 @@ public class SubjectController {
     return EntityToDto.getSubjects(subjects);
   }
 
+  @PutMapping
+  public Boolean existsBySubjectName(@RequestBody List<SubjectDto> subjectDtos) {
+    List<Subject> subjects = DtoToEntity.getSubjects(subjectDtos);
+    return Boolean.TRUE;
+  }
+
   @GetMapping("/{subjectName}")
   public SubjectDto getSubject(@PathVariable String subjectName) {
     Subject subject = subjectService.getSubject(subjectName);
