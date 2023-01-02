@@ -1,19 +1,3 @@
-insert into users (username, locked_out, login_atempts, active_flag, create_date, edit_date) values
-('csinger', 0, 0, 'Y', CURRENT_DATE, NULL),
-('jthyme', 0, 0, 'Y', CURRENT_DATE, NULL),
-('azapel', 0, 0, 'Y', CURRENT_DATE, NULL),
-('abino', 0, 0, 'Y', CURRENT_DATE, NULL),
-('dente', 0, 0, 'Y', CURRENT_DATE, NULL),
-('afresco', 0, 0, 'Y', CURRENT_DATE, NULL),
-('aseltzer', 0, 0, 'Y', CURRENT_DATE, NULL),
-('aromeo', 0, 0, 'Y', CURRENT_DATE, NULL),
-('agaither', 0, 0, 'Y', CURRENT_DATE, NULL),
-('akatt', 0, 0, 'Y', CURRENT_DATE, NULL),
-('alay', 0, 0, 'Y', CURRENT_DATE, NULL),
-('alynn', 0, 0, 'Y', CURRENT_DATE, NULL),
-('jwalker', 0, 0, 'Y', CURRENT_DATE, NULL),
-('jpott', 0, 0, 'Y', CURRENT_DATE, NULL);
-
 insert into student (firstName, lastName, email, create_date, edit_date) values
 ('Carole', 'Singer', 'csinger@myuniversity.edu', CURRENT_DATE, NULL),
 ('Justin', 'Thyme', 'jthyme@myuniversity.edu', CURRENT_DATE, NULL),

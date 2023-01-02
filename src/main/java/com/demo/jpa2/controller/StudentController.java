@@ -2,8 +2,8 @@ package com.demo.jpa2.controller;
 
 import com.demo.jpa2.domain.dto.StudentDto;
 import com.demo.jpa2.domain.entity.Student;
-import com.demo.jpa2.mapping.DtoToEntity;
-import com.demo.jpa2.mapping.EntityToDto;
+import com.demo.jpa2.domain.mapping.DtoToEntity;
+import com.demo.jpa2.domain.mapping.EntityToDto;
 import com.demo.jpa2.service.StudentService;
 import java.time.LocalDate;
 import java.util.List;

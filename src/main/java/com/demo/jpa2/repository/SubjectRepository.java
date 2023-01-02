@@ -10,7 +10,7 @@ public interface SubjectRepository extends JpaRepository<Subject, Long> {
 
   Subject findBySubjectName(String subjectName);
 
-  @Query(value = "SELECT s FROM Subject s WHERE s.subjectname IN :subjectNames")
+  @Query(value = "SELECT s FROM Subject s WHERE s.subjectName IN :subjectNames")
   List<Subject> findSubjectBySubjectNameList(Collection<String> subjectNames);
 
 }

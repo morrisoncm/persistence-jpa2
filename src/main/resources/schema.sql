@@ -1,16 +1,5 @@
 drop table IF EXISTS student, professor, subject, student_subject, professor_subject;
 
-create TABLE school_user (
-  u_id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(50) NOT NULL,
-  locked_out INT(1) NOT NULL,
-  login_atempts INT(1) NOT NULL,
-  active_flag VARCHAR(1) NOT NULL,
-  successful_login_date DATE,
-  create_date DATE,
-  edit_date DATE
-);
-
 create TABLE student (
   stu_id INT AUTO_INCREMENT PRIMARY KEY,
   firstname VARCHAR(50) NOT NULL,

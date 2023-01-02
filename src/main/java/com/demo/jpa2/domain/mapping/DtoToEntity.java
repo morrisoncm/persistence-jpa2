@@ -1,4 +1,4 @@
-package com.demo.jpa2.mapping;
+package com.demo.jpa2.domain.mapping;
 
 import static org.apache.commons.beanutils.BeanUtils.copyProperties;
 
