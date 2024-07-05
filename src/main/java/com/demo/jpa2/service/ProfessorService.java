@@ -1,18 +1,19 @@
 package com.demo.jpa2.service;
 
 import com.demo.jpa2.domain.entity.Professor;
+
 import java.util.List;
 
 public interface ProfessorService {
 
-  List<Professor> getProfessors();
+    List<Professor> getProfessors();
 
-  Professor getProfessor(String email);
+    Professor getProfessor(String email);
 
-  void registerProfessor(Professor professor);
+    void registerProfessor(Professor professor);
 
-  void updateProfessorProfile(Professor professor, String email);
+    void updateProfessorProfile(Professor professor, String email);
 
-  void deleteProfesorProfile(String email);
+    void deleteProfesorProfile(String email);
 
 }
