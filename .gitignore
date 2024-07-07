@@ -14,6 +14,4 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .idea/
-/.DS_Store
-/persistence-jpa2.ipr
-/src/main/java/com/demo/jpa2/domain/dto/ProfessorSubjectDto.java
+**/.DS_Store
